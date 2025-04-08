@@ -1,0 +1,10 @@
+osmnx
+geopandas
+pandas
+rasterio
+folium
+scikit-learn
+numpy
+matplotlib
+seaborn
+jupyter
