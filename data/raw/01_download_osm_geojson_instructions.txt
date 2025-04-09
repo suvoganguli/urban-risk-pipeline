@@ -1,0 +1,61 @@
+# Instructions for Downloading OSM GeoJSON Files from Overpass Turbo
+
+1. Go to https://overpass-turbo.eu
+
+2. For each of the following features, copy and paste the relevant Overpass QL query into the editor:
+
+---
+
+## A. Buildings
+
+[out:json][timeout:180];
+area["name"="Kawempe"]->.searchArea;
+(
+  way["building"](area.searchArea);
+  relation["building"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+---
+
+## B. Roads
+
+[out:json][timeout:180];
+area["name"="Kawempe"]->.searchArea;
+(
+  way["highway"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+---
+
+## C. Public Services (Clinics, Hospitals, Schools)
+
+[out:json][timeout:180];
+area["name"="Kawempe"]->.searchArea;
+(
+  node["amenity"~"clinic|hospital|school"](area.searchArea);
+  way["amenity"~"clinic|hospital|school"](area.searchArea);
+  relation["amenity"~"clinic|hospital|school"](area.searchArea);
+);
+out body;
+>;
+out skel qt;
+
+---
+
+3. Click the “Run” button (top-left play icon)
+
+4. Once the map loads the features, click:
+   - “Export” → “Download as GeoJSON”
+
+5. Rename the files accordingly:
+   - kawempe_buildings.geojson
+   - kawempe_roads.geojson
+   - kawempe_services.geojson
+
+6. Move them to your project folder under /data/raw/

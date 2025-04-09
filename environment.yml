@@ -1,0 +1,14 @@
+name: urban-risk
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - rasterio
+  - geopandas
+  - matplotlib
+  - scikit-learn
+  - folium
+  - jupyterlab
+  - osmnx
+  - rasterio
+

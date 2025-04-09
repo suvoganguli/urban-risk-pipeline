@@ -1,0 +1,33 @@
+# Instructions for Downloading Kampala Administrative Boundaries (Wards/Parishes)
+
+This file guides you to obtain subnational administrative boundaries for Kampala, Uganda, for use in spatial analysis of urban risk.
+
+## Source
+The recommended dataset comes from the Humanitarian Data Exchange (HDX), managed by the United Nations OCHA.
+
+## Steps to Download
+
+1. **Go to the Dataset Page**:
+   https://data.humdata.org/dataset/cod-ab-uga
+
+2. **Download the ZIP File**:
+   - Look for the file titled: `uga_admbnda_ubos_20200824_SHP.zip`
+   - This contains shapefiles for multiple levels of Uganda’s administrative hierarchy.
+
+3. **Extract the ZIP File**:
+   After downloading, unzip the file. You will find:
+   - `uga_admbnda_adm1_ubos_20200824.shp` (Districts)
+   - `uga_admbnda_adm2_ubos_20200824.shp` (Counties)
+   - `uga_admbnda_adm3_ubos_20200824.shp` (Sub-counties)
+   - `uga_admbnda_adm4_ubos_20200824.shp` (Parishes) ← **Recommended for project**
+
+4. **Move the ADM4 Files** to your project folder:
+   Suggested path: `data/raw/kampala_admin_boundaries/`
+
+## Notes
+- These files are based on data from the Uganda Bureau of Statistics (UBOS), dated August 2020.
+- Coordinate system is WGS 84 (EPSG:4326), compatible with OSM and NDVI layers.
+- You may need to filter the shapefile to only include parishes located in Kampala District.
+
+## Usage
+This shapefile will serve as the base zone unit for aggregating and visualizing urban risk indicators like NDVI, building density, and access to services.

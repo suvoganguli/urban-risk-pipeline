@@ -1,0 +1,39 @@
+# Instructions for Downloading NDVI (Satellite) Map using Google Earth Engine
+
+1. Go to https://code.earthengine.google.com and sign in with your Google account.
+
+2. Paste the following code into the Code Editor:
+
+var region = ee.Geometry.Rectangle([32.53, 0.32, 32.63, 0.38]);
+
+var s2 = ee.ImageCollection('COPERNICUS/S2_SR')
+  .filterBounds(region)
+  .filterDate('2023-01-01', '2023-12-31')
+  .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 20))
+  .select(['B4', 'B8']);
+
+var median = s2.median();
+var ndvi = median.normalizedDifference(['B8', 'B4']).rename('NDVI');
+
+Map.centerObject(region, 12);
+Map.addLayer(ndvi, {min: 0, max: 1, palette: ['white', 'green']}, 'NDVI');
+
+Export.image.toDrive({
+  image: ndvi.clip(region),
+  description: 'Kawempe_NDVI_2023',
+  folder: 'Earth Engine',
+  fileNamePrefix: 'Kawempe_NDVI_2023',
+  region: region,
+  scale: 10,
+  maxPixels: 1e13
+});
+
+3. Click the "Run" button in the main editor.
+
+4. Go to the "Tasks" tab (upper right), click the blue "Run" button.
+
+5. After the task completes, the file will be saved in your Google Drive under:
+
+   My Drive > Earth Engine > Kawempe_NDVI_2023.tif
+
+6. Download it manually to your local project folder.
