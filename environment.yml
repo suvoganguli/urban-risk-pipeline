@@ -11,4 +11,5 @@ dependencies:
   - jupyterlab
   - osmnx
   - rasterio
+  - seaborn
 
