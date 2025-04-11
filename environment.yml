@@ -1,15 +1,17 @@
 name: urban-risk
 channels:
   - conda-forge
+  - apple
+  - defaults
 dependencies:
+  - folium
+  - geopandas
+  - jupyterlab
+  - matplotlib
   - python=3.10
   - rasterio
-  - geopandas
-  - matplotlib
   - scikit-learn
-  - folium
-  - jupyterlab
+  - rasterstats
   - osmnx
-  - rasterio
   - seaborn
-
+prefix: /opt/anaconda3/envs/urban-risk
